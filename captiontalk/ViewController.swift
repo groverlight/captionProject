@@ -18,7 +18,16 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
     @IBOutlet weak var smallLabel: UILabel!
     @IBOutlet weak var fatButton: UIButton!
     let videoFileOutput = AVCaptureMovieFileOutput()
-    
+    private var tempFilePath: NSURL = {
+        
+        let tempPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("tempMovie.mp4")?.absoluteString
+        if FileManager.default.fileExists(atPath: tempPath!) {
+            do {
+                try FileManager.default.removeItem(atPath: tempPath!)
+            } catch { }
+        }
+        return NSURL(string: tempPath!)!
+    }()
 
 
     override func viewDidLoad() {
@@ -56,24 +65,13 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
         previewLayer.frame = self.view.layer.bounds
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.view.layer.insertSublayer(previewLayer, at: 0)
-        
+        captureSession.addOutput(videoFileOutput)
         captureSession.startRunning()
         
         
-        self.captureSession.addOutput(videoFileOutput)
+       
         
-        do{
-            let files = try deleteVideoHelper?.contentsOfDirectory(atPath: NSTemporaryDirectory())
-            for file:String in files!{
-                print (file)
-                try deleteVideoHelper?.removeItem(atPath: "\(NSTemporaryDirectory())")
-            }
 
-            
-        }
-        catch {
-            
-        }
 
 
         
@@ -104,9 +102,11 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
         let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
         
         
-        let filePath = NSURL.fileURL(withPath: "\(NSTemporaryDirectory())",isDirectory: true)
-        videoFileOutput.startRecording(toOutputFileURL: filePath as URL!, recordingDelegate: recordingDelegate)
+      //  let filePath = NSURL.fileURL(withPath: NSTemporaryDirectory(),isDirectory: true)
         print ("hold down")
+        videoFileOutput.startRecording(toOutputFileURL: tempFilePath as URL!, recordingDelegate: recordingDelegate)
+        
+        
     }
     
     func holdRelease(sender:UIButton){
@@ -116,12 +116,11 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
     }
     
 
-    
+ 
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
-        print ("recording started")
-        print (fileURL)
-        
+        print("recording start start")
     }
+    
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print ("recording finished")
