@@ -278,6 +278,8 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
         blurOverlay.removeFromSuperview()
         userCaption.removeFromSuperview()
         avLayer.removeFromSuperlayer()
+        self.view.layer.removeAllAnimations()
+        self.blurOverlay.effect = nil
     }
     //AVCaptureFileOutputRecordingDelegate delegate methods
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
@@ -295,17 +297,19 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
         let avLayerWidth = self.view.bounds.size.width/2
         let avLayerHeight = self.view.bounds.size.height/2
         self.userCaption.frame = CGRect(origin: CGPoint(x: self.view.bounds.size.width/2-avLayerWidth/2,y :self.view.bounds.size.height*2/3 - avLayerHeight/2), size: CGSize(width: avLayerWidth, height: avLayerHeight))
-        self.userCaption.text = self.speechString
-        self.blurOverlay.addSubview(self.userCaption)
+        self.userCaption.textColor = UIColor.white
         
         vibrantOverlay.frame = self.view.bounds
         self.view.addSubview(blurOverlay)
 
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.blurOverlay.effect = blurEffect
+
+
         }, completion: { (completion) in
            print ("blurrrrrr")
- 
+            self.userCaption.text = self.speechString
+            self.blurOverlay.addSubview(self.userCaption)
             self.playVideo()
         })
     }
@@ -314,9 +318,10 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
     // speechrecognizer delegate
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            
+            print ("speech done")
             fatButton.isEnabled = true
         } else {
+            print ("speech not done")
             fatButton.isEnabled = false
         }
     }
