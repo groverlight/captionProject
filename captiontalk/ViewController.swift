@@ -15,6 +15,7 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
     var previewLayer = AVCaptureVideoPreviewLayer()
     var deleteVideoHelper: FileManager? = FileManager()
     var speechString = String()
+
     @IBOutlet weak var progressBarBack: UIView!
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var bigLabel: UILabel!
@@ -136,6 +137,7 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
         let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
         if (self.smallLabel.isHidden == false){
             self.smallLabel.isHidden = true
+            self.bigLabel.isHidden = true
         }
         if (progressBar.isHidden == true){
             progressBar.isHidden = false
@@ -158,6 +160,7 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
     func holdRelease(sender:UIButton){
         if (self.smallLabel.isHidden == true){
             self.smallLabel.isHidden = false
+            self.bigLabel.isHidden = false
         }
         videoFileOutput.stopRecording()
         if (progressBar.isHidden == false){
