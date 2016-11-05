@@ -42,6 +42,20 @@
                                 <rect key="frame" x="-0.5" y="444.5" width="375" height="222.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUC-Eg-WMn" userLabel="Progress Bar Back">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="MAu-IB-Wl4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCN-or-QOL" userLabel="Progress Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" red="1" green="0.30167355000000001" blue="0.66502875189999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="cjf-i2-BcM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -49,18 +63,26 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8iX-Hi-9Dg" secondAttribute="bottom" id="3J7-9t-p7p"/>
                             <constraint firstItem="VLm-6A-8Aw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="7IG-Wt-zsI"/>
                             <constraint firstItem="FBn-KW-mfq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8Vd-Iw-4qn"/>
+                            <constraint firstItem="nUC-Eg-WMn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BsG-0s-gLa"/>
+                            <constraint firstItem="nUC-Eg-WMn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G1T-JQ-A9s"/>
                             <constraint firstItem="FBn-KW-mfq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="QEY-9a-3Pc"/>
                             <constraint firstItem="8iX-Hi-9Dg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SVl-kY-qx7"/>
                             <constraint firstItem="8iX-Hi-9Dg" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.333333" id="UHr-Ru-yFv"/>
                             <constraint firstItem="FBn-KW-mfq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bsi-gk-n4H"/>
+                            <constraint firstItem="RCN-or-QOL" firstAttribute="centerX" secondItem="nUC-Eg-WMn" secondAttribute="centerX" id="c5i-tV-wbl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FBn-KW-mfq" secondAttribute="trailing" constant="10" id="e7Q-zC-GQm"/>
                             <constraint firstItem="VLm-6A-8Aw" firstAttribute="top" secondItem="FBn-KW-mfq" secondAttribute="bottom" constant="10" id="fJP-bF-NGh"/>
+                            <constraint firstItem="RCN-or-QOL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hS2-TK-8y7"/>
+                            <constraint firstItem="nUC-Eg-WMn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="mgm-1S-6on"/>
+                            <constraint firstItem="RCN-or-QOL" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ouY-92-sRh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VLm-6A-8Aw" secondAttribute="trailing" constant="10" id="wx5-I8-uux"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bigLabel" destination="FBn-KW-mfq" id="SXL-ZP-tVX"/>
                         <outlet property="fatButton" destination="8iX-Hi-9Dg" id="oQS-qb-bD8"/>
+                        <outlet property="progressBar" destination="RCN-or-QOL" id="0HS-qP-BBF"/>
+                        <outlet property="progressBarBack" destination="nUC-Eg-WMn" id="HCb-Rv-sgN"/>
                         <outlet property="smallLabel" destination="VLm-6A-8Aw" id="bKD-bG-t5v"/>
                     </connections>
                 </viewController>

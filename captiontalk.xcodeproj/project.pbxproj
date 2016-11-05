@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27149B7E1DCDA45D00E35679 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */; };
+		278C3D661DCE4DCB00A309B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */; };
 		27933B081DCD0D1400E88B1C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27933B071DCD0D1400E88B1C /* AVFoundation.framework */; };
 		279ED6501DCD07E80041D548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED64F1DCD07E80041D548 /* AppDelegate.swift */; };
 		279ED6521DCD07E80041D548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED6511DCD07E80041D548 /* ViewController.swift */; };
@@ -16,7 +17,6 @@
 		279ED65A1DCD07E80041D548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279ED6581DCD07E80041D548 /* LaunchScreen.storyboard */; };
 		279ED6651DCD07E80041D548 /* captiontalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED6641DCD07E80041D548 /* captiontalkTests.swift */; };
 		279ED6701DCD07E80041D548 /* captiontalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED66F1DCD07E80041D548 /* captiontalkUITests.swift */; };
-		61F301B9CBE77820CB535A6D /* libPods-captiontalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A73A9DEF7B58269458F8F3BD /* libPods-captiontalk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		27933B071DCD0D1400E88B1C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		279ED64C1DCD07E80041D548 /* captiontalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = captiontalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279ED64F1DCD07E80041D548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +53,7 @@
 		279ED66B1DCD07E80041D548 /* captiontalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = captiontalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		279ED66F1DCD07E80041D548 /* captiontalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = captiontalkUITests.swift; sourceTree = "<group>"; };
 		279ED6711DCD07E80041D548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B97D4311E0C6DCAF6CCBC11 /* Pods-captiontalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-captiontalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-captiontalk/Pods-captiontalk.debug.xcconfig"; sourceTree = "<group>"; };
-		8D705C1F230B06EB99314477 /* Pods-captiontalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-captiontalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-captiontalk/Pods-captiontalk.release.xcconfig"; sourceTree = "<group>"; };
-		A73A9DEF7B58269458F8F3BD /* libPods-captiontalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-captiontalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D5DC1A1DCE43F8009D147D /* libpop.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpop.a; path = "Pods/../build/Debug-iphoneos/libpop.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278C3D661DCE4DCB00A309B9 /* QuartzCore.framework in Frameworks */,
 				27149B7E1DCDA45D00E35679 /* AssetsLibrary.framework in Frameworks */,
 				27933B081DCD0D1400E88B1C /* AVFoundation.framework in Frameworks */,
-				61F301B9CBE77820CB535A6D /* libPods-captiontalk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,9 +87,10 @@
 		27933B061DCD0D1400E88B1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */,
+				27D5DC1A1DCE43F8009D147D /* libpop.a */,
 				27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */,
 				27933B071DCD0D1400E88B1C /* AVFoundation.framework */,
-				A73A9DEF7B58269458F8F3BD /* libPods-captiontalk.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,7 +103,6 @@
 				279ED66E1DCD07E80041D548 /* captiontalkUITests */,
 				279ED64D1DCD07E80041D548 /* Products */,
 				27933B061DCD0D1400E88B1C /* Frameworks */,
-				5F72704C49BC8E4CBB2A8B87 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,15 +147,6 @@
 			path = captiontalkUITests;
 			sourceTree = "<group>";
 		};
-		5F72704C49BC8E4CBB2A8B87 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2B97D4311E0C6DCAF6CCBC11 /* Pods-captiontalk.debug.xcconfig */,
-				8D705C1F230B06EB99314477 /* Pods-captiontalk.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,12 +154,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 279ED6741DCD07E80041D548 /* Build configuration list for PBXNativeTarget "captiontalk" */;
 			buildPhases = (
-				D4A0E71CA067F95C5537AB87 /* Check Pods Manifest.lock */,
 				279ED6481DCD07E70041D548 /* Sources */,
 				279ED6491DCD07E70041D548 /* Frameworks */,
 				279ED64A1DCD07E70041D548 /* Resources */,
-				937D4AF58C327E661A5D8F2E /* Embed Pods Frameworks */,
-				D2B7B8F539EC743654FDD09D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,54 +276,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		937D4AF58C327E661A5D8F2E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-captiontalk/Pods-captiontalk-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2B7B8F539EC743654FDD09D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-captiontalk/Pods-captiontalk-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4A0E71CA067F95C5537AB87 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		279ED6481DCD07E70041D548 /* Sources */ = {
@@ -494,13 +433,13 @@
 		};
 		279ED6751DCD07E80041D548 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B97D4311E0C6DCAF6CCBC11 /* Pods-captiontalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KEKFU6H295;
 				INFOPLIST_FILE = captiontalk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Aaron.typeFace.captiontalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -509,13 +448,13 @@
 		};
 		279ED6761DCD07E80041D548 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D705C1F230B06EB99314477 /* Pods-captiontalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KEKFU6H295;
 				INFOPLIST_FILE = captiontalk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Aaron.typeFace.captiontalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

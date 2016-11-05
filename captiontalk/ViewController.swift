@@ -8,12 +8,14 @@
 
 import UIKit
 import AVFoundation
-
+import QuartzCore
 class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
     var captureSession: AVCaptureSession!
     var previewLayer = AVCaptureVideoPreviewLayer()
     var deleteVideoHelper: FileManager? = FileManager()
     
+    @IBOutlet weak var progressBarBack: UIView!
+    @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var bigLabel: UILabel!
     @IBOutlet weak var smallLabel: UILabel!
     @IBOutlet weak var fatButton: UIButton!
@@ -37,7 +39,9 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
         //add hold and release gestures to uibutton
         fatButton.addTarget(self, action: #selector(holdDown(sender:)), for: UIControlEvents.touchDown)
         fatButton.addTarget(self, action: #selector(holdRelease(sender:)), for: UIControlEvents.touchUpInside)
-        
+        // hide progressbar
+        progressBar.isHidden = true
+        progressBarBack.isHidden = true
         // initialize front-facing camera
         captureSession = AVCaptureSession()
         
@@ -104,6 +108,14 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
         
       //  let filePath = NSURL.fileURL(withPath: NSTemporaryDirectory(),isDirectory: true)
         print ("hold down")
+        if (progressBar.isHidden == true){
+            progressBar.isHidden = false
+            progressBarBack.isHidden = false
+            
+            UIView.animate(withDuration: 5) { () -> Void in
+                self.progressBar.transform = CGAffineTransform(scaleX: 0.000001, y: 1)
+            }
+        }
         videoFileOutput.startRecording(toOutputFileURL: tempFilePath as URL!, recordingDelegate: recordingDelegate)
         
         
@@ -112,6 +124,12 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate{
     func holdRelease(sender:UIButton){
         print ("release")
         videoFileOutput.stopRecording()
+        if (progressBar.isHidden == false){
+            progressBar.isHidden = true
+            progressBarBack.isHidden = true
+            progressBar.layer.removeAllAnimations()
+            progressBar.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
         
     }
     
