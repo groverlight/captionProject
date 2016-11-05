@@ -15,11 +15,18 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
     var previewLayer = AVCaptureVideoPreviewLayer()
     var deleteVideoHelper: FileManager? = FileManager()
     var speechString = String()
-
+    var moviePlayer: AVPlayer?
+    var blurOverlay = UIVisualEffectView()
+    var avLayer = AVPlayerLayer()
+    var userCaption = UILabel()
     @IBOutlet weak var progressBarBack: UIView!
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var bigLabel: UILabel!
     @IBOutlet weak var smallLabel: UILabel!
+    @IBOutlet weak var darkOverlay: UIView!
+    @IBOutlet weak var rightLine: UIView!
+    @IBOutlet weak var leftLine: UIView!
+    @IBOutlet weak var centerPiece: UILabel!
     @IBOutlet weak var fatButton: UIButton!
     let videoFileOutput = AVCaptureMovieFileOutput()
     private var tempFilePath: NSURL = {
@@ -50,6 +57,10 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
         // hide progressbar
         progressBar.isHidden = true
         progressBarBack.isHidden = true
+        //hide recording interface
+        centerPiece.isHidden = true
+        leftLine.isHidden = true
+        rightLine.isHidden = true
         // initialize front-facing camera
         captureSession = AVCaptureSession()
         
@@ -135,15 +146,16 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
 
     func holdDown(sender:UIButton){
         let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
-        if (self.smallLabel.isHidden == false){
-            self.smallLabel.isHidden = true
-            self.bigLabel.isHidden = true
-        }
+
         if (progressBar.isHidden == true){
             progressBar.isHidden = false
             progressBarBack.isHidden = false
+            self.smallLabel.isHidden = true
+            self.bigLabel.isHidden = true
+            centerPiece.isHidden = false
+            leftLine.isHidden = false
+            rightLine.isHidden = false
             
-
             UIView.animate(withDuration: 5, animations: { 
                 self.progressBar.transform = CGAffineTransform(scaleX: 0.000001, y: 1)
             }, completion: { (completion) in
@@ -152,20 +164,24 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
                 }
             })
         }
+        
+
         videoFileOutput.startRecording(toOutputFileURL: tempFilePath as URL!, recordingDelegate: recordingDelegate)
         recordSpeech()
         
     }
     
     func holdRelease(sender:UIButton){
-        if (self.smallLabel.isHidden == true){
-            self.smallLabel.isHidden = false
-            self.bigLabel.isHidden = false
-        }
+
         videoFileOutput.stopRecording()
         if (progressBar.isHidden == false){
             progressBar.isHidden = true
             progressBarBack.isHidden = true
+            self.smallLabel.isHidden = false
+            self.bigLabel.isHidden = false
+            centerPiece.isHidden = true
+            leftLine.isHidden = true
+            rightLine.isHidden = true
             progressBar.layer.removeAllAnimations()
             progressBar.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
@@ -239,8 +255,30 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
         }
         
     }
-
-
+    func playVideo() -> Void {
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.playerItemDidReachEnd(notification:)), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil);
+        
+        let avAsset = AVAsset(url: tempFilePath as URL)
+    
+        let avPlayerItem = AVPlayerItem(asset: avAsset)
+        moviePlayer = AVPlayer(playerItem: avPlayerItem)
+        avLayer.player = moviePlayer
+        avLayer.videoGravity = AVLayerVideoGravityResize
+        let avLayerWidth = self.view.bounds.size.width/2
+        let avLayerHeight = self.view.bounds.size.height/2
+        avLayer.frame = CGRect(origin: CGPoint(x: self.view.bounds.size.width/2-avLayerWidth/2,y :self.view.bounds.size.height/3 - avLayerHeight/2), size: CGSize(width: avLayerWidth, height: avLayerHeight));
+        
+        self.view.layer.addSublayer(avLayer)
+        self.moviePlayer?.play()
+        
+    }
+    func playerItemDidReachEnd(notification: NSNotification){
+        print ("video stopped playing")
+        blurOverlay.removeFromSuperview()
+        userCaption.removeFromSuperview()
+        avLayer.removeFromSuperlayer()
+    }
     //AVCaptureFileOutputRecordingDelegate delegate methods
     func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
         print("recording...")
@@ -249,18 +287,39 @@ class ViewController: UIViewController,AVCaptureFileOutputRecordingDelegate, SFS
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print ("DONE!")
+        let blurEffect = UIBlurEffect(style: .dark)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        
+        let vibrantOverlay = UIVisualEffectView(effect: vibrancyEffect)
+        blurOverlay.frame = self.view.bounds
+        let avLayerWidth = self.view.bounds.size.width/2
+        let avLayerHeight = self.view.bounds.size.height/2
+        self.userCaption.frame = CGRect(origin: CGPoint(x: self.view.bounds.size.width/2-avLayerWidth/2,y :self.view.bounds.size.height*2/3 - avLayerHeight/2), size: CGSize(width: avLayerWidth, height: avLayerHeight))
+        self.userCaption.text = self.speechString
+        self.blurOverlay.addSubview(self.userCaption)
+        
+        vibrantOverlay.frame = self.view.bounds
+        self.view.addSubview(blurOverlay)
+
+        UIView.animate(withDuration: 0.2, animations: {
+            self.blurOverlay.effect = blurEffect
+        }, completion: { (completion) in
+           print ("blurrrrrr")
+ 
+            self.playVideo()
+        })
     }
     
     
     // speechrecognizer delegate
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
+            
             fatButton.isEnabled = true
         } else {
             fatButton.isEnabled = false
         }
     }
-    
-    
+
 }
 
