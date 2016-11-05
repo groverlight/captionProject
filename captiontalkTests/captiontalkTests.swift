@@ -1,15 +1,15 @@
 //
-//  captionProjectTests.swift
-//  captionProjectTests
+//  captiontalkTests.swift
+//  captiontalkTests
 //
-//  Created by Grover Light on 11/4/16.
-//
+//  Created by Aaron Liu on 11/4/16.
+//  Copyright © 2016 Aaron Liu. All rights reserved.
 //
 
 import XCTest
-@testable import captionProject
+@testable import captiontalk
 
-class captionProjectTests: XCTestCase {
+class captiontalkTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ class captionProjectTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

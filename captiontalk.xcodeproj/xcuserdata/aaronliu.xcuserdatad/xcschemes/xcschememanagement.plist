@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>captionProject.xcscheme</key>
+		<key>captiontalk.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>DC36600A1DCCEB7400CE5596</key>
+		<key>279ED64B1DCD07E70041D548</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC36601E1DCCEB7400CE5596</key>
+		<key>279ED65F1DCD07E80041D548</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC3660291DCCEB7400CE5596</key>
+		<key>279ED66A1DCD07E80041D548</key>
 		<dict>
 			<key>primary</key>
 			<true/>

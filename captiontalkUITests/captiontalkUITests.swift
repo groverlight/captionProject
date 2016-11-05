@@ -1,14 +1,14 @@
 //
-//  captionProjectUITests.swift
-//  captionProjectUITests
+//  captiontalkUITests.swift
+//  captiontalkUITests
 //
-//  Created by Grover Light on 11/4/16.
-//
+//  Created by Aaron Liu on 11/4/16.
+//  Copyright © 2016 Aaron Liu. All rights reserved.
 //
 
 import XCTest
 
-class captionProjectUITests: XCTestCase {
+class captiontalkUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
