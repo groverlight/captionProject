@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27149B7E1DCDA45D00E35679 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */; };
 		278C3D661DCE4DCB00A309B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */; };
+		278C3D681DCE4FED00A309B9 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C3D671DCE4FED00A309B9 /* Speech.framework */; };
 		27933B081DCD0D1400E88B1C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27933B071DCD0D1400E88B1C /* AVFoundation.framework */; };
 		279ED6501DCD07E80041D548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED64F1DCD07E80041D548 /* AppDelegate.swift */; };
 		279ED6521DCD07E80041D548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279ED6511DCD07E80041D548 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		278C3D671DCE4FED00A309B9 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		27933B071DCD0D1400E88B1C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		279ED64C1DCD07E80041D548 /* captiontalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = captiontalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279ED64F1DCD07E80041D548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278C3D681DCE4FED00A309B9 /* Speech.framework in Frameworks */,
 				278C3D661DCE4DCB00A309B9 /* QuartzCore.framework in Frameworks */,
 				27149B7E1DCDA45D00E35679 /* AssetsLibrary.framework in Frameworks */,
 				27933B081DCD0D1400E88B1C /* AVFoundation.framework in Frameworks */,
@@ -87,6 +90,7 @@
 		27933B061DCD0D1400E88B1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				278C3D671DCE4FED00A309B9 /* Speech.framework */,
 				278C3D651DCE4DCB00A309B9 /* QuartzCore.framework */,
 				27D5DC1A1DCE43F8009D147D /* libpop.a */,
 				27149B7D1DCDA45D00E35679 /* AssetsLibrary.framework */,
